@@ -1,17 +1,31 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
-float a,b,c,d,e,m,x;
+float m,h,l;
+
+float intoTab(){
+    int ile;
+    float tab[ile];
+    cout<<"Ile liczb: ";
+    cin>>ile;
+     for (int i=0;i<ile;i++)
+     {
+         cout<<"Podaj "<<i+1<<" liczbe";
+         cin>>tab[i];
+     }
+     return *tab;
+}
 
 float srednia(float *tab)
 {
     float suma=0;
-    int ile=5;
-    //ile=sizeof tab / sizeof *tab;
+    int ile;
+    ile=sizeof(tab)/sizeof( *tab);
     cout<<"liczb w tablicy:"<<ile<<endl;
     for(int i=0;i>=ile;i++)
     {
-        suma+=*tab;
+        suma+=tab[i];
         tab++;
     }
     cout<<"Suma: "<<suma<<endl;
@@ -20,10 +34,8 @@ float srednia(float *tab)
 
 int main()
 {
-    cout << "Podaj piec liczb po spacji: ";
-    cin>>a>>b>>c>>d>>e;
-    float tab[]={a,b,c,d,e};
-    m=srednia(tab);
+
+    m=srednia(intoTab());
     cout<<"Srednia: "<<m<<endl;
     return 0;
 }
