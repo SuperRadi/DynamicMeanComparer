@@ -17,7 +17,7 @@ float intoTab(){
      return *tab;
 }
 
-float srednia(float tab[])
+float srednia(float *tab)
 {
     float suma=0;
     int ile;
