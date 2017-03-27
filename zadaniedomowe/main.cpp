@@ -1,29 +1,58 @@
 #include <iostream>
+#include <cstdlib>
+#include <cmath>
 
 using namespace std;
-float a,b,c,d,e,m,x;
+int ile;
+float m;
+
+float *intoTab(int ile)
+{
+    float* tab;
+    tab = new float[ile];
+    for (int i = 0; i < ile; i++)
+    {
+        cout << "Podaj " << i + 1 << " liczbe: ";
+        cin >> tab[i];
+    }
+    return tab;
+}
 
 float srednia(float *tab)
 {
     float suma=0;
-    int ile=5;
-    //ile=sizeof tab / sizeof *tab;
-    cout<<"liczb w tablicy:"<<ile<<endl;
-    for(int i=0;i>=ile;i++)
+    for(int i=0;i<ile;i++)
     {
-        suma+=*tab;
-        tab++;
+        suma+=tab[i];
     }
-    cout<<"Suma: "<<suma<<endl;
     return suma/ile;
+}
+void comp(float m, float *tab)
+{
+    float l=abs(m-tab[0]);
+    float fam[ile];
+    for(int n=0;n<=ile;n++)
+    {
+        fam[n]=abs(m-tab[n]);
+        if(l>=fam[n]) l=fam[n];
+    }
+    for(int n=0;n<=ile;n++)
+    {
+        if (fam[n] == l)
+        {
+            cout <<"Najblizej sredniej jest: "<< tab[n]<<endl;
+        }
+    }
 }
 
 int main()
 {
-    cout << "Podaj piec liczb po spacji: ";
-    cin>>a>>b>>c>>d>>e;
-    float tab[]={a,b,c,d,e};
-    m=srednia(tab);
-    cout<<"Srednia: "<<m<<endl;
+    float* x;
+    cout << "Ile liczb: ";
+    cin >> ile;
+    x=intoTab(ile);
+    m=srednia(x);
+    cout<<endl<<"Srednia: "<<m<<endl;
+    comp(m,x);
     return 0;
 }
